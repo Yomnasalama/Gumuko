@@ -26,17 +26,17 @@ def check_win(mark):
       for j in range(N):
         if grid[j][i] == grid[j][i+1] == grid[j][i+2] == grid[j][i+3] == grid[j][i+4] == mark:
           return True
-    
-    for i in range(M):         
+
+    for i in range(M):
       for j in range(N-4):
         if grid[j][i] == grid[j+1][i] == grid[j+2][i] == grid[j+3][i] == grid[j+4][i] == mark:
           return True
-    
+
     for i in range(M-4):      #check_dagonals
       for j in range(N-4):
         if grid[j][i] == grid[j+1][i+1] == grid[j+2][i+2] == grid[j+3][i+3] == grid[j+4][i+4]== mark:
           return True
-    
+
     for i in range (4,M):
       for j in range(N-4):
         if grid[j][i] == grid[j+1][i-1] == grid[j+2][i-2]==grid[j+3][i-3] == grid[j+4][i-4] == mark:
@@ -50,25 +50,25 @@ def check_tie_player(mark):
       for j in range(N):
         if (grid[j][i] == mark or grid[j][i] == '-') and (grid[j][i+1] == mark or grid[j][i+1] == '-') and (grid[j][i+2] == mark or grid[j][i+2] == '-') and( grid[j][i+3] == mark or grid[j][i+3]== '-')and (grid[j][i+4] == mark or grid[j][i+4] == '-'):
           flag1 = False
-    
+
     for i in range(M):         #check_columns
       for j in range(N-4):
         if (grid[j][i] == mark or grid[j][i] == '-') and(grid[j+1][i] == mark or grid[j+1][i] == '-')and (grid[j+2][i] == mark or grid[j+2][i] == '-') and (grid[j+3][i] == mark or grid[j+3][i] =='-') and(grid[j+4][i] == mark or grid[j+4][i] == '-'):
           flag2 = False
-    
+
     for i in range(M-4):      #check_dagonals
       for j in range(N-4):
         if (grid[j][i] == mark or grid[j][i] == '-') and (grid[j+1][i+1] == mark or grid[j+1][i+1] == '-') and (grid[j+2][i+2] == mark or grid[j+2][i+2] == '-')and (grid[j+3][i+3] == mark or grid[j+3][i+3] == '-') and (grid[j+4][i+4]== mark or grid[j+4][i+4] == '-'):
           flag3 = False
-    
+
     for i in range (4,M):
       for j in range(N-4):
         if (grid[j][i] == mark or grid[j][i] == '-') and (grid[j+1][i-1] == mark or grid[j+1][i-1] == '-') and (grid[j+2][i-2]== mark or grid[j+2][i-2] == '-') and (grid[j+3][i-3] == mark or grid[j+3][i-3] == '-') and (grid[j+4][i-4] == mark or grid[j+4][i-4] == '-'):
           flag4 = False
-    
+
     if(flag1 and flag2 and flag3 and flag4):
       return True
-    return False  
+    return False
 
 #This function checks if the game has a tie state or not
 def check_tie():
@@ -77,18 +77,18 @@ def check_tie():
         if not check_tie_player(mark):
             all_tie = False
     return all_tie
-	
-#This function checks if given cell is empty or not 
+
+#This function checks if given cell is empty or not
 def check_empty(i, j):
     if grid[i][j] == '-':
       return True
-    return False  
+    return False
 
-#This function checks if given position is valid or not 
+#This function checks if given position is valid or not
 def check_valid_position(i, j):
-    if i <= 14 and i >= 0 and j <=14 and j >=0:
+    if i <= M-4 and i >= 0 and j <= N - 4 and j >=0:
       return True
-    return False  
+    return False
 
 #This function sets the given mark to the given cell
 def set_cell(i, j, mark):
@@ -135,7 +135,7 @@ def play_game():
             print_grid()
             #Announcement of the final statement
             print("Woah! That's a tie!")
-            break		
+            break
         #Player number changes after each turn
         player = (player + 1) % n_players
 
