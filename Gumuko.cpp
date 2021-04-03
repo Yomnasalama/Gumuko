@@ -129,7 +129,7 @@ bool check_empty(int i, int j) {
 }
 //This function checks if given position is valid or not
 bool check_valid_position(int i, int j) {
-    if(i <= 14 && i >= 0 && j <= 14 && j >= 0)
+    if(i <= N - 1 && i >= 0 && j <= M - 1 && j >= 0)
         return true;
     return false;
 }
