@@ -86,7 +86,7 @@ def check_empty(i, j):
 
 #This function checks if given position is valid or not
 def check_valid_position(i, j):
-    if i <= M-4 and i >= 0 and j <= N - 4 and j >=0:
+    if i <= M - 1 and i >= 0 and j <= N - 1 and j >=0:
       return True
     return False
 
